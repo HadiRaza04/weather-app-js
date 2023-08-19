@@ -14,7 +14,6 @@ async function checkWeather(city) {
     }
     else {
         var data = await response.json();
-
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temp").innerHTML = Math.round(data.main.temp)+ "°c";
         document.querySelector(".humadity").innerHTML = data.main.humidity+ " %";
@@ -45,8 +44,15 @@ async function checkWeather(city) {
         document.querySelector(".error").style.display = "none";
     }
 }
-
+function pressEnterkey(event){
+    if(event.keyCode == 13){
+        checkWeather(searchBox.value);
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 searchBtn.addEventListener("click", ()=> {
-
     checkWeather(searchBox.value);
 })
